@@ -1,8 +1,15 @@
-import React, { useSate } from 'react';
+import React from 'react';
 import AppContext from './AppContext';
 
-const Provider = ({Children}) => {
-  <AppContext.Provider>{Children}</AppContext.Provider>
+const Provider = ({ Children }) => {
+const context = {
+
+}
+  return (
+  <AppContext.Provider value={context}>
+    {Children}
+  </AppContext.Provider>
+  )
 }
 
 export default Provider;

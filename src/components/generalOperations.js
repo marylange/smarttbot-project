@@ -1,9 +1,10 @@
 import React from 'react';
+import API from '../services/api';
 
 function GeneralOperation() {
   return (
     <div className="content-container">
-      <h1>Resumo geral operações</h1>
+      
     </div>
   );
 }
