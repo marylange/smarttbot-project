@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import * as API from '../services/Api';
 import '../styles/RunningRobots.css';
 import ReactFrappeChart from "react-frappe-charts";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function modeCheck(element) {
   if (element.mode === 1) {
@@ -61,15 +62,15 @@ function RunningRobots() {
     <div className="container">
 
       <div className="content-session">
-        <ul>
+
           {data.map(element => {
 
             return (
-              <li key={element.title}>
+              <div key={element.title} className="card">
                 <div className="content-session-information">
                   <section className="title-field">
                     <div>
-                      <h4>{element.title}</h4>
+                      <h5>{element.title}</h5>
                       <span>#{element.id}</span>
                     </div>
                     <div className="running">
@@ -114,7 +115,7 @@ function RunningRobots() {
 
                 <div className="content-session-graphic">
                   <div>
-                    <h4>Histórico do dia</h4>
+                    <h5>Histórico do dia</h5>
                     <span>última atualização . {new Date(element.updated_at).getHours() + "h"}</span>
                   </div>
                   <ReactFrappeChart
@@ -128,10 +129,10 @@ function RunningRobots() {
                   />
                 </div>
 
-              </li>
+              </div>
             );
           })}
-        </ul>
+
       </div>
     </div >
   );
