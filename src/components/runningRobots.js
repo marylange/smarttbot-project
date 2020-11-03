@@ -96,6 +96,20 @@ function RunningRobots() {
                   <section className="last-paper">
                     {renderLastPaper(element)}
                   </section>
+
+                  <section className="daily-balance">
+                    <div className="content-balance">
+                      <div>
+                        <span>Saldo diário</span>
+                        <p>{element.daily_balance}</p>
+                      </div>
+
+                      <div>
+                        <span>Trades no dia</span>
+                        <p>{element.number_trades}</p>
+                      </div>
+                    </div>
+                  </section>
                 </div>
 
                 <div className="content-session-graphic">
