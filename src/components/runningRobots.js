@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import API from '../services/api';
+import * as API from '../services/api';
 import '../styles/runningRobots.css';
 
 function modeCheck(element) {
@@ -22,11 +22,39 @@ function RunningRobots() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    API().then((result) => {
+    API.APIRequestMock().then((result) => {
       setData(result.data);
       console.log('result', result.data);
     });
   });
+
+  function renderLastPaper(element) {
+    if (element.last_paper !== undefined) {
+      return (
+        <section className="last-paper">
+          <div>
+            <p>{element.last_paper.position}</p>
+          </div>
+
+          <div>
+            <p>{element.last_paper.paper}</p>
+            <p>Compra</p>
+          </div>
+
+          <div>
+            <div>
+              <p>{element.last_paper.paper_value}</p>
+            </div>
+            <div>
+              <p>{element.last_paper.profit}</p>
+            </div>
+          </div>
+        </section>
+      );
+    } else {
+      return null;
+    }
+  }
 
   return (
     <div className="container">
@@ -59,6 +87,10 @@ function RunningRobots() {
                       <p>{element.type}</p>
                     </div>
                   </section>
+
+                  <section>
+                    {renderLastPaper(element)}
+                  </section>
                 </main>
 
               </li>
@@ -66,7 +98,7 @@ function RunningRobots() {
           })}
         </ul>
       </div>
-    </div>
+    </div >
   );
 }
 

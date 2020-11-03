@@ -27,10 +27,6 @@
   flex-direction: row;
 }
 
-.container .content-session .above-values div {
-  border: 1px solid black;
-}
-
 .container .content-session .values-below div {
   font-size: 20px;
 }
