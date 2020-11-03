@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import * as API from '../services/api';
-import '../styles/runningRobots.css';
+import * as API from '../services/Api';
+import '../styles/RunningRobots.css';
 import ReactFrappeChart from "react-frappe-charts";
 
 function modeCheck(element) {
@@ -32,7 +32,7 @@ function RunningRobots() {
   function renderLastPaper(element) {
     if (element.last_paper !== undefined) {
       return (
-        <section className="teste">
+        <section className="top-element">
           <div>
             <p>{element.last_paper.position}</p>
           </div>
@@ -42,7 +42,7 @@ function RunningRobots() {
             <p>Compra</p>
           </div>
 
-          <div className="teste2">
+          <div className="bottom-element">
             <div>
               <p>{element.last_paper.paper_value}</p>
             </div>
@@ -60,35 +60,49 @@ function RunningRobots() {
   return (
     <div className="container">
 
-      <div className="content-session-information">
+      <div className="content-session">
         <ul>
           {data.map(element => {
 
             return (
               <li key={element.title}>
-                <section className="title-field">
-                  <div>
-                    <h4>{element.title}</h4>
-                    <span>#{element.id}</span>
-                  </div>
-                  <div className="running">
-                    <div>{runningCheck(element)}</div>
-                  </div>
-                </section>
-
-                <main>
-                  <section className="above-values">
+                <div className="content-session-information">
+                  <section className="title-field">
                     <div>
-                      <span>{modeCheck(element)}</span>
-                      <span>{element.stock_codes}</span>
-                      <span>{element.type}</span>
+                      <h4>{element.title}</h4>
+                      <span>#{element.id}</span>
+                    </div>
+                    <div className="running">
+                      <div>{runningCheck(element)}</div>
                     </div>
                   </section>
-                </main>
-                <section className="last-paper">
-                  {renderLastPaper(element)}
-                </section>
+
+                  <main>
+                    <section className="above-values">
+                      <div>
+                        <div>
+                          <span>{modeCheck(element)}</span>
+                        </div>
+                        <div>
+                          <span>{element.stock_codes}</span>
+                        </div>
+                        <div>
+                          <span>{element.type}</span>
+                        </div>
+                      </div>
+                    </section>
+                  </main>
+
+                  <section className="last-paper">
+                    {renderLastPaper(element)}
+                  </section>
+                </div>
+
                 <div className="content-session-graphic">
+                  <div>
+                    <h4>Histórico do dia</h4>
+                    <span>última atualização . {new Date(element.updated_at).getHours() + "h"}</span>
+                  </div>
                   <ReactFrappeChart
                     type="line"
                     colors={["#21ba45"]}

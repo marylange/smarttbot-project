@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import GeneralOperations from './components/generalOperations';
-import RunningRobots from './components/runningRobots';
+import GeneralOperations from './components/GeneralOperations';
+import RunningRobots from './components/RunningRobots';
 
 function App() {
   return (
