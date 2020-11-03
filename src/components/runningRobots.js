@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import * as API from '../services/api';
 import '../styles/runningRobots.css';
+import ReactFrappeChart from "react-frappe-charts";
 
 function modeCheck(element) {
   if (element.mode === 1) {
@@ -31,7 +32,7 @@ function RunningRobots() {
   function renderLastPaper(element) {
     if (element.last_paper !== undefined) {
       return (
-        <section className="last-paper">
+        <section className="teste">
           <div>
             <p>{element.last_paper.position}</p>
           </div>
@@ -41,12 +42,12 @@ function RunningRobots() {
             <p>Compra</p>
           </div>
 
-          <div>
+          <div className="teste2">
             <div>
               <p>{element.last_paper.paper_value}</p>
             </div>
             <div>
-              <p>{element.last_paper.profit}</p>
+              <p>R$ {element.last_paper.profit}</p>
             </div>
           </div>
         </section>
@@ -59,7 +60,7 @@ function RunningRobots() {
   return (
     <div className="container">
 
-      <div className="content-session">
+      <div className="content-session-information">
         <ul>
           {data.map(element => {
 
@@ -78,20 +79,26 @@ function RunningRobots() {
                 <main>
                   <section className="above-values">
                     <div>
-                      <p>{modeCheck(element)}</p>
+                      <span>{modeCheck(element)}</span>
+                      <span>{element.stock_codes}</span>
+                      <span>{element.type}</span>
                     </div>
-                    <div>
-                      <p>{element.stock_codes}</p>
-                    </div>
-                    <div>
-                      <p>{element.type}</p>
-                    </div>
-                  </section>
-
-                  <section>
-                    {renderLastPaper(element)}
                   </section>
                 </main>
+                <section className="last-paper">
+                  {renderLastPaper(element)}
+                </section>
+                <div className="content-session-graphic">
+                  <ReactFrappeChart
+                    type="line"
+                    colors={["#21ba45"]}
+                    height={150}
+                    data={{
+                      labels: element.movimentations.slice(Math.max(element.movimentations.length - 8, 1)).map(moviment => new Date(moviment.date).getHours() + "h"),
+                      datasets: [{ values: element.movimentations.slice(Math.max(element.movimentations.length - 8, 1)).map(moviment => moviment.value) }],
+                    }}
+                  />
+                </div>
 
               </li>
             );

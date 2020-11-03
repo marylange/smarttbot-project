@@ -3,7 +3,7 @@
 }
 
 .container .content-session li {
-  width: 50vw;
+  width: 25vw;
   background-color: #ffffff;
   border: 1px solid black;
   margin: 50px;
@@ -15,18 +15,26 @@
 
 .container .content-session .title-field {
   display: flex;
+  background: yellow;
 }
 
 .container .content-session .title-field .running {
   margin-left: 40px;
 }
 
-.container .content-session main section {
-  align-content: flex-start;
+.above-values section {
   display: flex;
   flex-direction: row;
+
 }
 
-.container .content-session .values-below div {
-  font-size: 20px;
+.last-paper section {
+  border: 1px solid black;
+  width: 20vw;
 }
+
+.last-paper .teste {
+  display: flex;
+  justify-content: space-around;
+}
+
